@@ -23,7 +23,7 @@ cd backend && pip3 install -r requirements.txt
 cd frontend && npm install
 
 (release version)
-download latest release, and copy frontend/ to your local server.
+download latest release, and extract it somewhere.
 ```
 
 ## Usage
