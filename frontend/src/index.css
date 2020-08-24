@@ -1,0 +1,22 @@
+.logo {
+  height: 32px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px;
+}
+.site-layout .site-layout-background {
+  background: #fff;
+}
+  [data-theme="dark"] .site-layout .site-layout-background {
+    background: #141414;
+  }
+.siderMenu-sider{
+  position: fixed;
+  background-color: #001529;
+}
+h2.ant-typography{
+  font-size: 20px !important;
+  margin-top: 1.0em !important;
+}
+.stack-show{
+  white-space: pre-line;
+}
