@@ -1,12 +1,20 @@
 # frider
 
-中文版点我
+Dump dex, trace/intercept Java/native function. Based on React, Django, Frida, adb. 
 
-Dump unpacked dex, trace/intercept Java/native function. Based on React, Django, Frida, adb. 
+## Features
 
-## Install & Settings
+- enumerate Android APPs
+- show basic information 
+- unpack app, dump dex
+- enumerate Java classes & methods
+- enumerate Native modules & export functions/variables
+- trace arguments & retval of Java methods (needs Burp to intercept)
+- trace arguments & retval of native function (not really, requires user to finish related arguments parsing)
 
-Make sure you are using **latest** frida-tools and frida-server. 
+## Install
+
+Make sure you are using **latest** frida-tools and frida-server (test on 12.11.9). 
 
 ```
 (dev version)
@@ -17,58 +25,31 @@ cd frontend && npm install
 (release version)
 download latest release, and copy frontend/ to your local server.
 ```
-Default Burp listener is 127.0.0.1:8080, change at `backend/server/functions/frida_main.py`
 
 ## Usage
 
-### 1. Start
+Please refer to [wiki page](https://github.com/refate/frider/wiki/Usage)
 
-Run backend (Django server):
-```
-cd backend 
-python3 manage.py runserver
-```
-Run frontend (React.js):
-```
-cd frontend
-npm start (dev version) or visit localhost:3000 (release version)
-```
+[中文版wiki](https://github.com/refate/frider/wiki/Usage-CN)
 
-Run **latest** frida-server (test on 12.11.9) on your USB-attached Android device. 
+## Reference & Thanks
 
-### 2. Select APP
+[monkeylord/XServer](https://github.com/monkeylord/XServer)
 
-Press `Connect`. The encoding should be with your cmd setting, change at `backend/server/functions/utils.py`, default: GBK.  
+[viva-frida/Awesome--Frida-UI](https://github.com/viva-frida/Awesome--Frida-UI)
 
-Select one APP and move on to other pages. 
+[GuoQiang1993/Frida-Apk-Unpack](https://github.com/GuoQiang1993/Frida-Apk-Unpack)
 
-### 3-1. APP info
+[hluwa/FRIDA-DEXDump](https://github.com/hluwa/FRIDA-DEXDump)
 
-Provides a table of basic APP information like versionCode, permissions, paths, instruction sets. This feature may not work on some adb versions. 
+[T3rry7f/Hijacker](https://github.com/T3rry7f/Hijacker)
 
-### 3-2. APP unpack
+[Ant Design](https://ant.design/)
 
-Read **Tips** on the page, choose a plan to dump dex files. The dex files may also exist in `/data/data/(packageName)` and `/sdcard/Frider/(packageName)`.
+## TODO
 
-### 4-1. Java class/method enumerate
+bug fix
 
-Press `Inject` to inject frida script into selected app if you have not done it. 
+## Change log 
 
-Choose either Plan A or Plan B to enumerate Java methods. 
-
-Click method nodes in the Method List to add them into your TraceList. 
-
-### 4-2. Java method trace
-
-Move to Java -> Trace page. 
-
-If you want to intercept arguments/retval, please start Burp Suite (etc.) and listen 127.0.0.1:8080. Enable the `Intercept(Java) ?` button on the page. 
-
-Now you can press `Start` of Plan A. 
-
-## Reference
-
-XServer
-awesome
-burp
-dexdump
+2020/08/24 v0.1.0

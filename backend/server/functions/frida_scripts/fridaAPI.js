@@ -167,14 +167,16 @@ function _interceptMethod(className, methodNamePlus){
         var methodName = methodNamePlus
     }
     Java.perform(function () {
-        const targetClass = Java.use(className);    // get class
+        const targetClass = Java.use(className);             // get class
         const overloads = targetClass[methodName].overloads; // get all overloads
         overloads.forEach(function (overload){
             overload.implementation = function(){
                 const api = className + '-' + methodName;
                 var changedArgs = forwardData(api+'.args', arguments);
                 for(var i=0;i<arguments.length;i++){
-                    arguments[i] = changedArgs[i.toString()];
+                    if(changedArgs[i.toString()].indexOf("<instance:") == -1){  // do not change object/instance
+                        arguments[i] = changedArgs[i.toString()];
+                    }
                 }
                 var retval = this[methodName].apply(this, arguments);
                 retval = forwardData(api+'.retval', retval);
