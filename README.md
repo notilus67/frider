@@ -18,7 +18,7 @@ Make sure you are using **latest** frida-tools and frida-server (test on 12.11.9
 
 ```
 (dev version)
-git clone https://github.com/refate/fider
+git clone https://github.com/refate/frider
 cd backend && pip3 install -r requirements.txt
 cd frontend && npm install
 
